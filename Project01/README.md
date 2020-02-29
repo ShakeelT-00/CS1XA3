@@ -10,6 +10,8 @@
       arg1: 1
       arg1: 2
       arg1: 3
+      arg1: 4
+      arg1: 5
 
    Conditions:
       1. arg1: 1
@@ -20,6 +22,10 @@
            happen
       3. arg1: 3
          * If a file extension which is non-existant in the directory is entered, the output will be 0
+      4. arg1: 4
+	 * User must enter 'Change' or 'Restore' exactly or else it will not work
+      5. arg1: 5
+	 * User must enter 'Backup' or 'Restore' exactly or else it will not work
 
 ## Feature 01
 
@@ -56,6 +62,39 @@
 
    Reference: Some code was taken from 
               * [[https://askubuntu.com/questions/333710/how-to-find-all-files-with-the-same-extension-within-a-directory]]
+
+## Feature 04
+
+   Description: Finds all shell scripts in directory. Creates a file called 'permissions.log' if it 
+                doesn't already exist. Asks user to input 'Change' or 'Restore'.
+		Change: changes the shell script file permissions so only people with write permission
+			will have executable permission. Stores the file name with it's original
+			permissions in file 'permissions.log', overwrites if it already exists.
+		Restore: All files in file 'permissions.log' are restored to their original
+			 permissions before they were changed previously.
+
+   Execution: ./project_analyze.sh 4
+
+   Reference: Some code was taken from
+	      * [[https://askubuntu.com/questions/152001/how-can-i-get-octal-file-permissions-from-command-line]]
+	      * [[https://unix.stackexchange.com/questions/174037/extracting-the-second-word-from-a-string-variable]]
+	      * [[https://linuxhint.com/bash_wildcard_tutorial/]]
+ 
+## Feature 05
+
+   Description: Asks user to enter 'Backup' or 'Restore'.
+		Backup: Creates an empty directory 'backup' if it doesn't exist, empties the directory
+			if it does exist. Creates a file 'restore.log' in directory 'backup'. Finds 
+			all files that end with '.tmp', stores the file name and original file
+			location in 'restore.log', then copies them to 'backup' and removes them from
+			original location.
+		Restore: Restores all the files in the 'restore.log' file to their original location.
+			 If the file does not exist then it gives an error. 
+
+   Execution: ./project_analyze.sh 5
+
+   Reference: Some code was taken from
+	      * [[https://stackoverflow.com/questions/12628327/how-to-show-and-update-echo-on-same-line]]
 
 ## Custom feature 01
 
