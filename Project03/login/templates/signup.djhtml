@@ -3,5 +3,11 @@
 {% block title %}Signup Page{% endblock %}
 
 {% block middle_column %}
-    <!-- TODO Objective 1: implement signup form -->
+
+    <form method="post">
+        {% csrf_token %}
+        {{ signup_form }}
+        <button type="submit">Sign up</button>
+    </form>
+
 {% endblock %}

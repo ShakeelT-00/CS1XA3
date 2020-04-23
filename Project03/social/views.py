@@ -47,10 +47,7 @@ def account_view(request):
                         (if handled in this view)
     """
     if request.user.is_authenticated:
-        form = None
-
-        # TODO Objective 3: Create Forms and Handle POST to Update UserInfo / Password
-
+        form = PasswordChangeForm(request.user, request.POST)
         user_info = models.UserInfo.objects.get(user=request.user)
         context = { 'user_info' : user_info,
                     'form' : form }
